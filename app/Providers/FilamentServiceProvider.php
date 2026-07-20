@@ -7,7 +7,6 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Vite;
 
 class FilamentServiceProvider extends PanelProvider
 {
@@ -26,10 +25,14 @@ class FilamentServiceProvider extends PanelProvider
             ->pages([\Filament\Pages\Dashboard::class])
             ->middleware([
                 \Illuminate\Cookie\Middleware\EncryptCookies::class,
+                \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
                 \Illuminate\Session\Middleware\StartSession::class,
+                \Illuminate\Session\Middleware\AuthenticateSession::class,
                 \Illuminate\View\Middleware\ShareErrorsFromSession::class,
                 \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            ])
+            ->authMiddleware([
                 \Filament\Http\Middleware\Authenticate::class,
             ])
             // Kredit pembuat kecil & muted di footer admin (render hook resmi Filament).
