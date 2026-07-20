@@ -12,11 +12,12 @@
         @foreach ($tabs as $tab)
             @php $active = request()->routeIs($tab['route']); @endphp
             <a href="{{ route($tab['route']) }}"
-               class="flex flex-col items-center justify-center py-2.5 gap-0.5 {{ $active ? 'text-teal-700 dark:text-teal-400' : 'text-slate-400 dark:text-slate-500' }}">
+               aria-label="Buka {{ $tab['label'] }}"
+               class="flex flex-col items-center justify-center py-2.5 gap-1 {{ $active ? 'text-teal-700 dark:text-teal-400' : 'text-slate-400 dark:text-slate-500' }}">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $tab['icon'] }}" />
                 </svg>
-                <span class="text-[10px] font-medium">{{ $tab['label'] }}</span>
+                <span class="text-[11px] font-semibold">{{ $tab['label'] }}</span>
             </a>
         @endforeach
     </div>
