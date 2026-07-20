@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0E7C86">
     <title>@yield('title', 'KKMB Connect')</title>
     <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/icon-192.png">
+    <link rel="apple-touch-icon" href="/images/kkmb-logo-solid.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
         tailwind.config = {
@@ -26,9 +26,11 @@
     {{-- Top bar --}}
     <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
-                <span class="w-8 h-8 rounded-xl bg-brand text-white grid place-items-center font-extrabold text-sm">K</span>
-                <span class="font-bold tracking-tight">KKMB <span class="text-brand">Connect</span></span>
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-full bg-white border border-slate-200 dark:border-slate-700 p-1 shadow-sm grid place-items-center">
+                    <img src="/images/kkmb-logo.png" alt="Logo KKMB" class="w-full h-full object-contain">
+                </span>
+                <span class="font-bold tracking-tight leading-tight">KKMB <span class="text-brand">Connect</span></span>
             </a>
             <div class="flex items-center gap-1">
                 <a href="{{ route('notifications.index') }}" aria-label="Buka notifikasi" class="relative p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">

@@ -13,9 +13,11 @@
 <body class="bg-slate-950 text-slate-100 antialiased">
     <div class="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,_rgba(14,124,134,0.45),_transparent_55%)] pointer-events-none"></div>
     <header class="relative max-w-lg mx-auto px-5 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-            <span class="w-8 h-8 rounded-xl bg-brand text-white grid place-items-center font-extrabold">K</span>
-            <span class="font-bold">KKMB <span class="text-brand">Connect</span></span>
+        <div class="flex items-center gap-3">
+            <span class="w-11 h-11 rounded-full bg-white p-1.5 grid place-items-center shadow-sm">
+                <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="w-full h-full object-contain">
+            </span>
+            <span class="font-bold leading-tight">KKMB <span class="text-brand">Connect</span></span>
         </div>
         <a href="{{ route('login') }}" class="text-sm font-semibold text-brand bg-white/8 border border-white/10 px-4 py-2 rounded-full backdrop-blur">Masuk</a>
     </header>
