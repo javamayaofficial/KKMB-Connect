@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\PaymentResource\Pages;
 use App\Models\Payment;
 use App\Services\Payment\PaymentService;
 use Filament\Forms;

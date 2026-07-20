@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\MemberResource\Pages;
 use App\Models\AuditLog;
 use App\Models\User;
 use App\Services\Notification\NotificationService;
