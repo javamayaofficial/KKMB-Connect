@@ -37,6 +37,12 @@ class LoginController extends Controller
             ]);
         }
 
+        if ($user->requiresOnboardingCompletion()) {
+            return redirect()
+                ->route($user->onboardingRedirectRoute())
+                ->with('info', 'Lengkapi profil dan portofolio Anda terlebih dahulu agar profil anggota tampil utuh.');
+        }
+
         if ($user->status !== 'active') {
             return redirect()->route('pending');
         }

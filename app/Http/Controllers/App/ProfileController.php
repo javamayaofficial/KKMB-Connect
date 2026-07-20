@@ -10,7 +10,10 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        $profile = auth()->user()->profile;
+        $profile = auth()->user()->profile()->firstOrCreate([], [
+            'negara' => 'Indonesia',
+        ]);
+
         return view('app.profile', compact('profile'));
     }
 
@@ -33,7 +36,9 @@ class ProfileController extends Controller
 
         $user->update(['name' => $data['name'], 'phone' => $data['phone']]);
 
-        $profile = $user->profile;
+        $profile = $user->profile()->firstOrCreate([], [
+            'negara' => 'Indonesia',
+        ]);
         $fotoPath = $profile->foto_path;
 
         if ($request->hasFile('foto')) {
@@ -55,7 +60,15 @@ class ProfileController extends Controller
             'foto_path' => $fotoPath,
         ]);
 
-        return back()->with('status', 'Profil berhasil diperbarui.');
+        if ($user->needsPortfolioCompletion()) {
+            return redirect()
+                ->route('business.create')
+                ->with('status', 'Profil tersimpan. Lanjutkan dengan menambahkan portofolio atau bisnis utama Anda.');
+        }
+
+        return redirect()
+            ->route($user->nextAppRoute())
+            ->with('status', 'Profil berhasil diperbarui.');
     }
 
     // Kartu keanggotaan digital + QR (QR berisi qr_token, bukan data sensitif)

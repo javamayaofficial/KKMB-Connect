@@ -66,6 +66,87 @@ class User extends Authenticatable implements FilamentUser
             ->exists();
     }
 
+    public function onboardingChecklist(): array
+    {
+        $profile = $this->profile;
+
+        return [
+            'identitas' => filled($this->name) && filled($this->phone),
+            'angkatan' => filled($profile?->angkatan),
+            'domisili' => filled($profile?->kota),
+            'profesional' => filled($profile?->profesi) || filled($profile?->bidang_usaha),
+            'narasi' => filled($profile?->bio),
+            'portofolio' => $this->businesses()->exists(),
+        ];
+    }
+
+    public function onboardingCompletedCount(): int
+    {
+        return count(array_filter($this->onboardingChecklist()));
+    }
+
+    public function onboardingTotalCount(): int
+    {
+        return count($this->onboardingChecklist());
+    }
+
+    public function onboardingCompletionPercentage(): int
+    {
+        $total = $this->onboardingTotalCount();
+
+        if ($total === 0) {
+            return 0;
+        }
+
+        return (int) round(($this->onboardingCompletedCount() / $total) * 100);
+    }
+
+    public function hasCompletedCoreProfile(): bool
+    {
+        $checklist = $this->onboardingChecklist();
+
+        unset($checklist['portofolio']);
+
+        return ! in_array(false, $checklist, true);
+    }
+
+    public function needsProfileCompletion(): bool
+    {
+        return ! $this->hasCompletedCoreProfile();
+    }
+
+    public function needsPortfolioCompletion(): bool
+    {
+        return ! $this->onboardingChecklist()['portofolio'];
+    }
+
+    public function hasCompletedOnboarding(): bool
+    {
+        return $this->hasCompletedCoreProfile() && ! $this->needsPortfolioCompletion();
+    }
+
+    public function requiresOnboardingCompletion(): bool
+    {
+        return ! $this->hasCompletedOnboarding();
+    }
+
+    public function onboardingRedirectRoute(): string
+    {
+        return $this->needsProfileCompletion() ? 'profile.edit' : 'business.create';
+    }
+
+    public function postOnboardingRoute(): string
+    {
+        return $this->isActiveMember() ? 'dashboard' : 'pending';
+    }
+
+    public function nextAppRoute(): string
+    {
+        return $this->requiresOnboardingCompletion()
+            ? $this->onboardingRedirectRoute()
+            : $this->postOnboardingRoute();
+    }
+
     // Dipakai Filament untuk menentukan siapa yang boleh masuk panel admin.
     public function canAccessPanel(\Filament\Panel $panel): bool
     {

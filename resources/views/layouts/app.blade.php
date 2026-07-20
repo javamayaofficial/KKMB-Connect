@@ -25,10 +25,15 @@
     <style>body{font-family:'Inter',system-ui,sans-serif}</style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen antialiased">
+    @php
+        $authUser = auth()->user();
+        $homeRoute = $authUser ? route($authUser->nextAppRoute()) : route('landing');
+        $showMemberNavigation = $authUser?->isActiveMember() && $authUser?->hasCompletedOnboarding();
+    @endphp
     {{-- Top bar --}}
     <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
+            <a href="{{ $homeRoute }}" class="flex items-center gap-3">
                 <span class="w-11 h-11 rounded-full bg-white border border-slate-200 dark:border-slate-700 p-1 shadow-[0_10px_24px_rgba(15,94,90,0.14)] ring-1 ring-brand/10 grid place-items-center">
                     <img src="/images/kkmb-logo.png" alt="Logo KKMB" class="w-full h-full object-contain">
                 </span>
@@ -38,13 +43,15 @@
                 </span>
             </a>
             <div class="flex items-center gap-1">
-                <a href="{{ route('notifications.index') }}" aria-label="Buka notifikasi" class="relative p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0a3 3 0 11-6 0"/></svg>
-                    @php $unread = auth()->check() ? auth()->user()->notifications()->whereNull('read_at')->count() : 0; @endphp
-                    @if ($unread > 0)
-                        <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] grid place-items-center">{{ $unread > 9 ? '9+' : $unread }}</span>
-                    @endif
-                </a>
+                @if ($showMemberNavigation)
+                    <a href="{{ route('notifications.index') }}" aria-label="Buka notifikasi" class="relative p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0a3 3 0 11-6 0"/></svg>
+                        @php $unread = auth()->check() ? auth()->user()->notifications()->whereNull('read_at')->count() : 0; @endphp
+                        @if ($unread > 0)
+                            <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] grid place-items-center">{{ $unread > 9 ? '9+' : $unread }}</span>
+                        @endif
+                    </a>
+                @endif
                 <button @click="dark = !dark; localStorage.theme = dark ? 'dark' : 'light'" aria-label="Ganti mode terang gelap" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
                     <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
                     <svg x-show="dark" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.4 6.4l-1.4-1.4M7 7L5.6 5.6m12.8 0L17 7M7 17l-1.4 1.4M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
@@ -64,7 +71,11 @@
         <x-app-footer />
     </main>
 
-    @auth <x-bottom-nav /> @endauth
+    @auth
+        @if ($showMemberNavigation)
+            <x-bottom-nav />
+        @endif
+    @endauth
     <script src="/pwa.js"></script>
     @livewireScripts
 </body>

@@ -18,7 +18,9 @@
     <div class="min-h-screen flex flex-col items-center justify-center px-5 py-10">
         <div class="w-full max-w-sm">
             <div class="text-center mb-6">
-                <span class="inline-grid place-items-center w-14 h-14 rounded-2xl bg-white/15 text-white font-extrabold text-xl mb-3">K</span>
+                <span class="inline-grid place-items-center w-16 h-16 rounded-full bg-white p-2 shadow-[0_16px_40px_rgba(2,6,23,0.18)] mb-3">
+                    <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="w-full h-full object-contain">
+                </span>
                 <h1 class="text-white text-xl font-bold">KKMB Connect</h1>
                 <p class="text-white/70 text-sm mt-1">Satu Jaringan, Ribuan Peluang.</p>
             </div>

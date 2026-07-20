@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Alias middleware kustom
         $middleware->alias([
             'active.member' => \App\Http\Middleware\EnsureActiveMember::class,
+            'onboarding.completed' => \App\Http\Middleware\EnsureOnboardingCompleted::class,
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         ]);

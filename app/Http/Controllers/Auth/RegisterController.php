@@ -65,6 +65,8 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('pending');
+        return redirect()
+            ->route($user->onboardingRedirectRoute())
+            ->with('info', 'Akun berhasil dibuat. Lanjutkan profil dan portofolio Anda agar pengurus dapat menilai profil anggota secara utuh.');
     }
 }

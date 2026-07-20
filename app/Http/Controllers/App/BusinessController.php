@@ -30,7 +30,11 @@ class BusinessController extends Controller
 
         Business::create($data);
 
-        return redirect()->route('business.index')->with('status', 'Bisnis diajukan. Menunggu persetujuan admin.');
+        $user = $request->user();
+
+        return redirect()
+            ->route($user->nextAppRoute())
+            ->with('status', 'Portofolio berhasil diajukan. Profil anggota Anda kini lebih lengkap dan siap ditinjau.');
     }
 
     public function edit(Business $business)
@@ -48,7 +52,11 @@ class BusinessController extends Controller
         $data['status'] = 'pending';
         $business->update($data);
 
-        return redirect()->route('business.index')->with('status', 'Perubahan disimpan. Menunggu persetujuan admin.');
+        $user = $request->user();
+
+        return redirect()
+            ->route($user->nextAppRoute())
+            ->with('status', 'Perubahan portofolio disimpan. Profil anggota Anda tetap tampil semakin kuat.');
     }
 
     protected function validated(Request $request): array
