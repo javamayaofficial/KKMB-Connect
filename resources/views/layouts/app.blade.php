@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#0E7C86">
+    <meta name="description" content="KKMB Connect menghadirkan direktori alumni, event, kartu anggota digital, dan peluang kolaborasi dalam ekosistem premium KKMB.">
     <title>@yield('title', 'KKMB Connect')</title>
     <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/kkmb-logo-solid.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
         tailwind.config = {
@@ -27,10 +29,13 @@
     <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                <span class="w-10 h-10 rounded-full bg-white border border-slate-200 dark:border-slate-700 p-1 shadow-sm grid place-items-center">
+                <span class="w-11 h-11 rounded-full bg-white border border-slate-200 dark:border-slate-700 p-1 shadow-[0_10px_24px_rgba(15,94,90,0.14)] ring-1 ring-brand/10 grid place-items-center">
                     <img src="/images/kkmb-logo.png" alt="Logo KKMB" class="w-full h-full object-contain">
                 </span>
-                <span class="font-bold tracking-tight leading-tight">KKMB <span class="text-brand">Connect</span></span>
+                <span class="leading-tight">
+                    <span class="block font-bold tracking-tight">KKMB <span class="text-brand">Connect</span></span>
+                    <span class="block text-[10px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Member Ecosystem</span>
+                </span>
             </a>
             <div class="flex items-center gap-1">
                 <a href="{{ route('notifications.index') }}" aria-label="Buka notifikasi" class="relative p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">

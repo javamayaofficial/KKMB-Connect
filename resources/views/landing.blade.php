@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0E7C86">
+    <meta name="description" content="KKMB Connect adalah platform resmi Koperasi Kesejahteraan Mahasiswa Bandung untuk membangun relasi alumni, peluang bisnis, event, dan layanan komunitas dalam satu pengalaman premium.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
     <title>KKMB Connect — Satu Jaringan, Ribuan Peluang</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#0E7C86',dark:'#0F5E5A',accent:'#F5A623'}}}}}</script>
@@ -14,10 +19,13 @@
     <div class="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,_rgba(14,124,134,0.45),_transparent_55%)] pointer-events-none"></div>
     <header class="relative max-w-lg mx-auto px-5 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <span class="w-11 h-11 rounded-full bg-white p-1.5 grid place-items-center shadow-sm">
+            <span class="w-12 h-12 rounded-full bg-white p-1.5 grid place-items-center shadow-[0_10px_30px_rgba(2,6,23,0.18)] ring-1 ring-brand/20">
                 <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="w-full h-full object-contain">
             </span>
-            <span class="font-bold leading-tight">KKMB <span class="text-brand">Connect</span></span>
+            <span class="leading-tight">
+                <span class="block font-bold text-white">KKMB <span class="text-brand">Connect</span></span>
+                <span class="block text-[10px] uppercase tracking-[0.22em] text-slate-400">Koperasi Kesejahteraan Mahasiswa Bandung</span>
+            </span>
         </div>
         <a href="{{ route('login') }}" class="text-sm font-semibold text-brand bg-white/8 border border-white/10 px-4 py-2 rounded-full backdrop-blur">Masuk</a>
     </header>
