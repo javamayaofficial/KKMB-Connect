@@ -68,6 +68,9 @@ class User extends Authenticatable
     // Dipakai Filament untuk menentukan siapa yang boleh masuk panel admin.
     public function canAccessPanel(\Filament\Panel $panel): bool
     {
-        return $this->hasAnyRole(['super_admin', 'pengurus']) && $this->status === 'active';
+        return $this->status === 'active'
+            && $this->roles()
+                ->whereIn('name', ['super_admin', 'pengurus'])
+                ->exists();
     }
 }
