@@ -99,7 +99,12 @@ class NotificationIntegrationResource extends Resource
                         ? [
                             Forms\Components\TextInput::make('recipient')->label('Email Tujuan')->email()->required(),
                             Forms\Components\TextInput::make('subject')->label('Subjek')->default('Tes Email KKMB Connect')->required(),
-                            Forms\Components\RichEditor::make('message')->label('Isi Email')->default('<p>Ini adalah email uji dari integrasi KKMB Connect.</p>')->required(),
+                            Forms\Components\Textarea::make('message')
+                                ->label('Isi Email (HTML)')
+                                ->rows(8)
+                                ->default('<p>Ini adalah email uji dari integrasi KKMB Connect.</p>')
+                                ->helperText('Gunakan HTML sederhana untuk menguji template email.')
+                                ->required(),
                         ]
                         : [
                             Forms\Components\TextInput::make('recipient')->label('Nomor WhatsApp')->required(),
