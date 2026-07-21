@@ -35,136 +35,68 @@
         </div>
     </header>
 
-    <section class="relative max-w-lg mx-auto px-5 pt-8 pb-10">
+    <section class="relative max-w-lg mx-auto px-5 pt-8 pb-28">
         <div class="overflow-hidden rounded-[34px] border border-white/10 bg-white/6 shadow-[0_30px_90px_rgba(15,94,90,0.28)] backdrop-blur-xl">
-            <div class="p-6 text-center">
-                <span class="inline-flex items-center gap-2 text-[11px] font-semibold text-brand bg-brand/10 border border-brand/20 px-3 py-1.5 rounded-full mb-4">
-                    Premium Alumni App
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <div class="p-6">
+                <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-3 py-1.5 text-[11px] font-semibold text-brand">
+                    Aplikasi Alumni Resmi
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                 </span>
-                <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white">
-                    Satu Jaringan,
-                    <span class="text-brand">Ribuan Peluang Nyata.</span>
+                <h1 class="text-3xl font-extrabold leading-tight tracking-tight text-white">
+                    KKMB Connect
+                    <span class="block text-brand">Simple, Cepat, Terhubung.</span>
                 </h1>
-                <p class="text-slate-300 mt-4 leading-relaxed text-sm">
-                    Platform resmi KKMB untuk mempererat relasi alumni, membuka peluang kolaborasi bisnis,
-                    dan memudahkan akses event, kartu anggota, serta layanan komunitas dalam satu pengalaman yang elegan.
+                <p class="mt-3 text-sm leading-relaxed text-slate-300">
+                    Direktori alumni, kartu anggota, event, dan peluang kolaborasi dalam satu aplikasi yang ringkas dan mudah dipakai.
                 </p>
-                <div class="mt-5 grid grid-cols-3 gap-2 text-left">
-                    @foreach ([
-                        ['2.000+', 'Alumni aktif'],
-                        ['Bandung+', 'Koneksi lokal'],
-                        ['1 aplikasi', 'Kartu, event, bisnis'],
-                    ] as $proof)
-                        <div class="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
-                            <p class="text-sm font-bold text-white">{{ $proof[0] }}</p>
-                            <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">{{ $proof[1] }}</p>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="mt-6 flex flex-col gap-3">
-                    <a href="{{ route('register') }}" class="w-full py-3.5 rounded-2xl bg-brand text-white font-semibold shadow-lg shadow-teal-950/40 active:scale-95 transition">Gabung Sekarang</a>
-                    <a href="{{ route('login') }}" class="w-full py-3.5 rounded-2xl border border-white/10 bg-white/5 font-semibold text-white active:scale-95 transition">Saya Sudah Punya Akun</a>
-                </div>
-                <p class="mt-3 text-[11px] text-slate-400">Proses daftar singkat. Mulai dari profil dasar, lalu lengkapi saat sudah masuk.</p>
-            </div>
 
-            <div class="px-4 pb-4">
-                <div class="rounded-[28px] border border-white/10 bg-[linear-gradient(160deg,rgba(14,124,134,0.18),rgba(2,6,23,0.85))] p-4">
-                    <div class="rounded-[26px] border border-white/10 bg-slate-950/65 p-3 shadow-[0_18px_50px_rgba(2,6,23,0.28)]">
-                        <div class="mx-auto max-w-[240px] rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(6,18,26,0.98))] p-3 shadow-[0_20px_60px_rgba(2,6,23,0.45)]">
-                            <div class="rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(14,124,134,0.28),transparent_38%),linear-gradient(180deg,rgba(14,124,134,0.14),rgba(2,6,23,0.94))] p-3">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <span class="grid h-9 w-9 place-items-center rounded-full bg-white p-1 ring-1 ring-brand/20">
-                                            <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="h-full w-full object-contain">
-                                        </span>
-                                        <div>
-                                            <p class="text-[11px] font-bold text-white">KKMB Connect</p>
-                                            <p class="text-[9px] uppercase tracking-[0.22em] text-white/45">Premium App</p>
-                                        </div>
-                                    </div>
-                                    <span class="rounded-full bg-emerald-400/15 px-2 py-1 text-[9px] font-semibold text-emerald-300">Active</span>
-                                </div>
-                                <div class="mt-3 rounded-2xl border border-white/10 bg-white/8 p-3">
-                                    <p class="text-[10px] uppercase tracking-[0.22em] text-slate-400">Member Lounge</p>
-                                    <p class="mt-1 text-sm font-semibold text-white">Direktori, event, dan kartu anggota dalam satu layar</p>
-                                    <div class="mt-3 grid grid-cols-3 gap-2">
-                                        <div class="rounded-xl bg-white/10 px-2 py-2 text-center">
-                                            <p class="text-sm font-bold text-white">2k+</p>
-                                            <p class="text-[9px] text-slate-400">Relasi</p>
-                                        </div>
-                                        <div class="rounded-xl bg-white/10 px-2 py-2 text-center">
-                                            <p class="text-sm font-bold text-white">24/7</p>
-                                            <p class="text-[9px] text-slate-400">Akses</p>
-                                        </div>
-                                        <div class="rounded-xl bg-white/10 px-2 py-2 text-center">
-                                            <p class="text-sm font-bold text-white">QR</p>
-                                            <p class="text-[9px] text-slate-400">Ticket</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 grid grid-cols-2 gap-2">
-                                    <div class="rounded-2xl border border-white/10 bg-white/8 px-3 py-3">
-                                        <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Trust Layer</p>
-                                        <p class="mt-1 text-sm font-semibold text-white">Direktori alumni terverifikasi</p>
-                                    </div>
-                                    <div class="rounded-2xl border border-white/10 bg-white/8 px-3 py-3">
-                                        <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Fast Access</p>
-                                        <p class="mt-1 text-sm font-semibold text-white">Kartu digital, QR, dan event dalam satu layar</p>
-                                    </div>
+                <div class="mt-5 rounded-[28px] border border-white/10 bg-[linear-gradient(160deg,rgba(14,124,134,0.18),rgba(2,6,23,0.85))] p-4">
+                    <div class="rounded-[24px] border border-white/10 bg-slate-950/65 p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="grid h-10 w-10 place-items-center rounded-full bg-white p-1 ring-1 ring-brand/20">
+                                    <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="h-full w-full object-contain">
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-white">KKMB Connect</p>
+                                    <p class="text-[10px] uppercase tracking-[0.22em] text-white/45">Member App</p>
                                 </div>
                             </div>
+                            <span class="rounded-full bg-emerald-400/15 px-2 py-1 text-[9px] font-semibold text-emerald-300">Active</span>
+                        </div>
+                        <div class="mt-4 grid grid-cols-3 gap-2">
+                            @foreach ([
+                                ['Direktori', 'Alumni'],
+                                ['Kartu', 'Digital'],
+                                ['Event', 'Cepat'],
+                            ] as $item)
+                                <div class="rounded-2xl border border-white/10 bg-white/8 px-3 py-3 text-center">
+                                    <p class="text-sm font-bold text-white">{{ $item[0] }}</p>
+                                    <p class="mt-1 text-[10px] text-slate-400">{{ $item[1] }}</p>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="max-w-lg mx-auto px-5 pb-6">
-        <div class="rounded-[28px] border border-white/10 bg-white/5 p-5">
-            <div class="flex items-start justify-between gap-4">
-                <div>
-                    <p class="text-[11px] uppercase tracking-[0.24em] text-brand">Kenapa Lebih Istimewa</p>
-                    <h2 class="mt-2 text-2xl font-bold text-white leading-tight">Bukan sekadar database alumni.</h2>
+                <div class="mt-5 grid grid-cols-3 gap-2">
+                    @foreach ([
+                        ['Relasi', 'Cari alumni cepat'],
+                        ['Event', 'Daftar tanpa ribet'],
+                        ['Bisnis', 'Buka kolaborasi'],
+                    ] as $feature)
+                        <div class="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
+                            <p class="text-sm font-bold text-white">{{ $feature[0] }}</p>
+                            <p class="mt-1 text-[11px] leading-relaxed text-slate-400">{{ $feature[1] }}</p>
+                        </div>
+                    @endforeach
                 </div>
-                <span class="shrink-0 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">High Trust</span>
-            </div>
-            <p class="mt-3 text-sm leading-relaxed text-slate-300">
-                KKMB Connect dirancang untuk mempertemukan relasi yang bernilai, mempermudah kehadiran di event,
-                dan menjadikan ekosistem alumni terasa hidup, modern, dan terpercaya.
-            </p>
-        </div>
-    </section>
 
-    <section class="max-w-lg mx-auto px-5 pb-6 grid grid-cols-2 gap-3">
-        @foreach ([
-            ['Relasi Bernilai', 'Temukan alumni berdasarkan profesi, kota, dan peluang kolaborasi yang relevan.'],
-            ['Kartu Anggota Elegan', 'Akses identitas anggota digital dan QR untuk pengalaman yang lebih eksklusif.'],
-            ['Event Lebih Praktis', 'Daftar event, cek agenda, dan check-in dengan alur yang cepat dan profesional.'],
-            ['Peluang Bisnis Nyata', 'Buka percakapan, kerja sama, dan promosi dalam ekosistem alumni yang terkurasi.'],
-        ] as $f)
-            <div class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-[0_10px_30px_rgba(2,6,23,0.12)]">
-                <div class="w-11 h-11 rounded-2xl bg-brand/10 border border-brand/20 text-brand grid place-items-center mb-3 text-lg">✦</div>
-                <h3 class="font-semibold text-sm text-white leading-snug">{{ $f[0] }}</h3>
-                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">{{ $f[1] }}</p>
-            </div>
-        @endforeach
-    </section>
-
-    <section class="max-w-lg mx-auto px-5 pb-28">
-        <div class="rounded-[28px] border border-brand/20 bg-[linear-gradient(135deg,rgba(14,124,134,0.18),rgba(245,166,35,0.10))] p-5">
-            <p class="text-[11px] uppercase tracking-[0.24em] text-brand">Suara Komunitas</p>
-            <p class="mt-3 text-base leading-relaxed text-white">
-                “Platform ini membuat jaringan alumni terasa lebih dekat, lebih rapi, dan jauh lebih profesional saat dipakai untuk membangun koneksi baru.”
-            </p>
-            <div class="mt-4 flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-semibold text-white">Komunitas KKMB</p>
-                    <p class="text-xs text-slate-300">Direktori, event, dan kolaborasi dalam satu ekosistem</p>
+                <div class="mt-6 flex flex-col gap-3">
+                    <a href="{{ route('register') }}" class="w-full rounded-2xl bg-brand py-3.5 text-center font-semibold text-white shadow-lg shadow-teal-950/40 transition active:scale-95">Gabung Sekarang</a>
+                    <a href="{{ route('login') }}" class="w-full rounded-2xl border border-white/10 bg-white/5 py-3.5 text-center font-semibold text-white transition active:scale-95">Saya Sudah Punya Akun</a>
                 </div>
-                <a href="{{ route('register') }}" class="inline-flex items-center justify-center rounded-2xl bg-white text-slate-900 px-4 py-2.5 text-sm font-semibold">Mulai</a>
+                <p class="mt-3 text-[11px] text-slate-400">Daftar singkat, lanjutkan profil setelah masuk.</p>
             </div>
         </div>
     </section>
