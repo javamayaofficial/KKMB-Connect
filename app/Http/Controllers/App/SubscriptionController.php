@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\SubscriptionPlan;
 use App\Services\Payment\PaymentService;
+use App\Services\Notification\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,7 +57,7 @@ class SubscriptionController extends Controller
     }
 
     // Upload bukti transfer (JPG/PNG/PDF, maks 2MB)
-    public function uploadProof(Request $request, Payment $payment)
+    public function uploadProof(Request $request, Payment $payment, NotificationService $notifications)
     {
         abort_unless($payment->user_id === auth()->id(), 403);
 
@@ -72,6 +73,17 @@ class SubscriptionController extends Controller
             'bukti_path' => $request->file('bukti')->store('bukti', 'public'),
             'status' => 'pending',
         ]);
+
+        $notifications->broadcastUsers(
+            $notifications->recipientsForScope('pengurus'),
+            'payment_submitted',
+            [
+                'name' => $payment->user->name,
+                'amount' => 'Rp '.number_format((int) $payment->jumlah, 0, ',', '.'),
+                'admin_url' => url('/admin/payments'),
+            ],
+            ['in_app', 'wa', 'email'],
+        );
 
         return redirect()->route('subscription.index')
             ->with('status', 'Bukti pembayaran terkirim. Menunggu verifikasi admin.');

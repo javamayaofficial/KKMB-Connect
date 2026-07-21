@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Services\Notification\NotificationService;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,15 +19,28 @@ class PasswordResetController extends Controller
         return view('auth.forgot-password');
     }
 
-    public function sendLink(Request $request)
+    public function sendLink(Request $request, NotificationService $notifications)
     {
         $request->validate(['email' => ['required', 'email']]);
 
-        // Password broker Laravel: mengirim email reset lewat mailer default.
-        // (Di produksi, arahkan MAIL_MAILER ke SMTP valid, atau ganti ke notifikasi kustom.)
-        $status = Password::sendResetLink($request->only('email'));
+        $user = User::query()->where('email', $request->string('email'))->first();
 
-        return back()->with('status', __($status));
+        if ($user) {
+            $token = Password::broker()->createToken($user);
+            $resetUrl = route('password.reset', [
+                'token' => $token,
+                'email' => $user->email,
+            ]);
+
+            $notifications->triggerEvent(
+                $user,
+                'forgot_password',
+                ['reset_url' => $resetUrl, 'url' => $resetUrl],
+                ['in_app', 'wa', 'email'],
+            );
+        }
+
+        return back()->with('status', 'Jika email terdaftar, kami telah mengirimkan instruksi reset kata sandi.');
     }
 
     public function showReset(Request $request, string $token)

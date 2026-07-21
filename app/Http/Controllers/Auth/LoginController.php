@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\Notification\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -14,7 +15,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, NotificationService $notifications)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -35,6 +36,12 @@ class LoginController extends Controller
             throw ValidationException::withMessages([
                 'email' => 'Akun Anda tidak dapat mengakses aplikasi. Hubungi pengurus.',
             ]);
+        }
+
+        if (! $user->first_login_at) {
+            $user->forceFill(['first_login_at' => now()])->save();
+
+            $notifications->triggerEvent($user, 'first_login');
         }
 
         if ($user->requiresOnboardingCompletion()) {

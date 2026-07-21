@@ -55,11 +55,22 @@ class RegisterController extends Controller
             return $user;
         });
 
-        // Notifikasi (best-effort; tidak menggagalkan registrasi bila WA/email gagal)
-        $notifications->notify(
+        $notifications->triggerEvent(
             $user,
-            'Pendaftaran Diterima',
-            'Terima kasih telah mendaftar di KKMB Connect. Akun Anda sedang menunggu verifikasi pengurus.',
+            'account_registration',
+            ['url' => route('profile.edit')],
+            ['in_app', 'wa', 'email'],
+        );
+
+        $notifications->broadcastUsers(
+            User::query()->role(['super_admin', 'pengurus'])->get(),
+            'member_submission',
+            [
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'admin_url' => url('/admin/members'),
+            ],
             ['in_app', 'wa', 'email'],
         );
 

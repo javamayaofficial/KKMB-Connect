@@ -77,8 +77,9 @@ class MemberResource extends Resource
                             ]);
                         }
                         AuditLog::record('verifikasi_anggota', 'User', $record->id);
-                        $notif->notify($record, 'Akun Terverifikasi',
-                            'Selamat! Akun Anda telah diverifikasi. Kartu keanggotaan digital sudah aktif.',
+                        $notif->triggerEvent($record, 'member_approved', [
+                            'url' => url('/dashboard'),
+                        ],
                             ['in_app', 'wa', 'email']);
                     }),
                 Tables\Actions\Action::make('tolak')

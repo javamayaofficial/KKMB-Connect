@@ -66,10 +66,12 @@ class PaymentService
                         'berakhir_at' => $mulai->copy()->addDays($subscription->plan->durasi_hari),
                     ]);
 
-                    $this->notifications->notify(
+                    $this->notifications->triggerEvent(
                         $subscription->user,
-                        'Langganan Aktif',
-                        "Pembayaran paket {$subscription->plan->nama} telah diverifikasi. Langganan aktif hingga {$subscription->berakhir_at->format('d M Y')}.",
+                        'payment_approved',
+                        [
+                            'message' => "Pembayaran paket {$subscription->plan->nama} telah diverifikasi. Langganan aktif hingga {$subscription->berakhir_at->format('d M Y')}.",
+                        ],
                         ['in_app', 'wa', 'email'],
                     );
                 }

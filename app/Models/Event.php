@@ -10,7 +10,7 @@ class Event extends Model
 {
     protected $fillable = [
         'judul', 'deskripsi', 'poster_path', 'mulai_at', 'selesai_at',
-        'lokasi', 'kuota', 'is_paid', 'harga', 'status', 'created_by',
+        'lokasi', 'kuota', 'is_paid', 'harga', 'status', 'published_notified_at', 'created_by',
     ];
 
     protected function casts(): array
@@ -19,6 +19,7 @@ class Event extends Model
             'mulai_at' => 'datetime',
             'selesai_at' => 'datetime',
             'is_paid' => 'boolean',
+            'published_notified_at' => 'datetime',
         ];
     }
 
