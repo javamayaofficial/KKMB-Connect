@@ -11,7 +11,7 @@
         </div>
         <h2 class="text-lg font-bold mb-2">Menunggu Verifikasi</h2>
         <p class="text-sm text-slate-500 leading-relaxed mb-6">Terima kasih telah mendaftar. Akun Anda sedang ditinjau pengurus KKMB. Sambil menunggu, pastikan profil dan portofolio Anda sudah lengkap agar proses penilaian lebih cepat dan akurat.</p>
-        <div class="rounded-3xl border border-slate-200 p-4 text-left mb-6">
+        <div class="mb-6 rounded-[30px] border border-slate-200 bg-white/90 p-4 text-left shadow-[0_12px_32px_rgba(15,23,42,0.08)] backdrop-blur">
             <div class="flex items-center justify-between gap-3">
                 <div>
                     <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Profiling</p>

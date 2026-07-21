@@ -70,20 +70,51 @@
             </div>
 
             <div class="px-4 pb-4">
-                <div class="rounded-[28px] bg-[linear-gradient(160deg,rgba(14,124,134,0.18),rgba(2,6,23,0.85))] border border-white/10 p-4">
-                    <img
-                        src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20mobile%20app%20interface%20for%20an%20alumni%20network%20platform%2C%20teal%20and%20gold%20premium%20brand%2C%20clean%20ios%20dashboard%20mockup%2C%20community%20directory%2C%20event%20ticket%20qr%2C%20business%20networking%2C%20realistic%20device%20presentation%2C%20high-end%20corporate%20islamic%20aesthetic%2C%20soft%20studio%20lighting&image_size=portrait_16_9"
-                        alt="Pratinjau premium KKMB Connect"
-                        class="w-full h-56 object-cover rounded-2xl border border-white/10"
-                    >
-                    <div class="mt-3 grid grid-cols-2 gap-2">
-                        <div class="rounded-2xl bg-white/8 border border-white/10 px-3 py-3">
-                            <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Trust Layer</p>
-                            <p class="mt-1 text-sm font-semibold text-white">Direktori alumni terverifikasi</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/8 border border-white/10 px-3 py-3">
-                            <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Fast Access</p>
-                            <p class="mt-1 text-sm font-semibold text-white">Kartu digital, QR, dan event dalam satu layar</p>
+                <div class="rounded-[28px] border border-white/10 bg-[linear-gradient(160deg,rgba(14,124,134,0.18),rgba(2,6,23,0.85))] p-4">
+                    <div class="rounded-[26px] border border-white/10 bg-slate-950/65 p-3 shadow-[0_18px_50px_rgba(2,6,23,0.28)]">
+                        <div class="mx-auto max-w-[240px] rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(6,18,26,0.98))] p-3 shadow-[0_20px_60px_rgba(2,6,23,0.45)]">
+                            <div class="rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(14,124,134,0.28),transparent_38%),linear-gradient(180deg,rgba(14,124,134,0.14),rgba(2,6,23,0.94))] p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span class="grid h-9 w-9 place-items-center rounded-full bg-white p-1 ring-1 ring-brand/20">
+                                            <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="h-full w-full object-contain">
+                                        </span>
+                                        <div>
+                                            <p class="text-[11px] font-bold text-white">KKMB Connect</p>
+                                            <p class="text-[9px] uppercase tracking-[0.22em] text-white/45">Premium App</p>
+                                        </div>
+                                    </div>
+                                    <span class="rounded-full bg-emerald-400/15 px-2 py-1 text-[9px] font-semibold text-emerald-300">Active</span>
+                                </div>
+                                <div class="mt-3 rounded-2xl border border-white/10 bg-white/8 p-3">
+                                    <p class="text-[10px] uppercase tracking-[0.22em] text-slate-400">Member Lounge</p>
+                                    <p class="mt-1 text-sm font-semibold text-white">Direktori, event, dan kartu anggota dalam satu layar</p>
+                                    <div class="mt-3 grid grid-cols-3 gap-2">
+                                        <div class="rounded-xl bg-white/10 px-2 py-2 text-center">
+                                            <p class="text-sm font-bold text-white">2k+</p>
+                                            <p class="text-[9px] text-slate-400">Relasi</p>
+                                        </div>
+                                        <div class="rounded-xl bg-white/10 px-2 py-2 text-center">
+                                            <p class="text-sm font-bold text-white">24/7</p>
+                                            <p class="text-[9px] text-slate-400">Akses</p>
+                                        </div>
+                                        <div class="rounded-xl bg-white/10 px-2 py-2 text-center">
+                                            <p class="text-sm font-bold text-white">QR</p>
+                                            <p class="text-[9px] text-slate-400">Ticket</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 grid grid-cols-2 gap-2">
+                                    <div class="rounded-2xl border border-white/10 bg-white/8 px-3 py-3">
+                                        <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Trust Layer</p>
+                                        <p class="mt-1 text-sm font-semibold text-white">Direktori alumni terverifikasi</p>
+                                    </div>
+                                    <div class="rounded-2xl border border-white/10 bg-white/8 px-3 py-3">
+                                        <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Fast Access</p>
+                                        <p class="mt-1 text-sm font-semibold text-white">Kartu digital, QR, dan event dalam satu layar</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
