@@ -10,15 +10,20 @@
         ];
     @endphp
 
-    <section class="mb-6 rounded-[28px] border border-brand/10 bg-[linear-gradient(145deg,rgba(14,124,134,1),rgba(15,94,90,0.94),rgba(2,6,23,0.96))] p-5 text-white shadow-[0_22px_60px_rgba(15,94,90,0.22)]">
+    <section class="relative mb-6 overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(14,124,134,1),rgba(15,94,90,0.94),rgba(2,6,23,0.96))] p-5 text-white shadow-[0_24px_70px_rgba(15,94,90,0.24)]">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_65%)]"></div>
         <div class="flex items-start justify-between gap-4">
             <div>
                 <p class="text-xs uppercase tracking-[0.24em] text-white/65">Member Lounge</p>
-                <h1 class="mt-2 text-2xl font-bold leading-tight">{{ auth()->user()->name }} 👋</h1>
+                <h1 class="mt-2 text-[1.7rem] font-bold leading-tight tracking-tight">{{ auth()->user()->name }} 👋</h1>
                 <p class="mt-2 text-sm leading-relaxed text-white/75">
                     Selamat datang kembali. Kelola kartu anggota, temukan koneksi strategis,
                     dan buka peluang baru dari ekosistem alumni yang terus berkembang.
                 </p>
+                <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white/80">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    Ekosistem alumni aktif dan terkurasi
+                </div>
             </div>
             <div class="rounded-2xl border border-white/15 bg-white/10 px-3 py-2 text-right">
                 <p class="text-[11px] text-white/65">Status</p>
@@ -57,8 +62,8 @@
         </div>
         <div class="grid grid-cols-2 gap-3">
             @foreach ($quickActions as $qa)
-                <a href="{{ route($qa[0]) }}" class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 shadow-sm hover:shadow-md transition">
-                    <span class="w-12 h-12 rounded-2xl bg-brand/10 text-brand grid place-items-center">
+                <a href="{{ route($qa[0]) }}" class="rounded-[28px] border border-white/70 bg-white/82 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.10)] dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_30px_rgba(2,6,23,0.30)]">
+                    <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand/10 text-brand ring-1 ring-brand/10">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $qa[3] }}"/></svg>
                     </span>
                     <p class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">{{ $qa[1] }}</p>
@@ -78,7 +83,7 @@
             <span class="text-xs text-slate-400">Pusat koneksi teratas</span>
         </div>
         @if ($sebaran->isEmpty())
-            <div class="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-6 text-center bg-white/70 dark:bg-slate-900/60">
+            <div class="rounded-[28px] border border-dashed border-slate-300 p-6 text-center bg-white/80 shadow-sm dark:border-slate-700 dark:bg-slate-900/60">
                 <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">Sebaran belum muncul</p>
                 <p class="mt-1 text-sm text-slate-500">Lengkapi data kota di profil agar jaringan Anda tampil lebih kredibel.</p>
                 <a href="{{ route('profile.edit') }}" class="inline-flex items-center justify-center mt-4 rounded-2xl bg-brand px-4 py-2.5 text-sm font-semibold text-white">Lengkapi Profil</a>
@@ -86,7 +91,7 @@
         @else
             <div class="space-y-2">
                 @foreach ($sebaran->sortByDesc('jumlah')->take(6) as $s)
-                    <div class="flex items-center justify-between rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 px-4 py-3.5 shadow-sm">
+                    <div class="flex items-center justify-between rounded-[26px] border border-white/70 bg-white/82 px-4 py-3.5 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_30px_rgba(2,6,23,0.30)]">
                         <div>
                             <span class="text-sm font-semibold">{{ $s->kota ?: 'Tidak diketahui' }}</span>
                             <p class="text-xs text-slate-500 mt-0.5">Node alumni aktif</p>
@@ -108,7 +113,7 @@
             <a href="{{ route('alumni.index') }}" class="text-xs text-brand font-semibold">Lihat direktori</a>
         </div>
         @if ($rekomendasi->isEmpty())
-            <div class="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-6 text-center bg-white/70 dark:bg-slate-900/60">
+            <div class="rounded-[28px] border border-dashed border-slate-300 p-6 text-center bg-white/80 shadow-sm dark:border-slate-700 dark:bg-slate-900/60">
                 <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">Relasi strategis belum tersedia</p>
                 <p class="mt-1 text-sm text-slate-500">Lengkapi profesi dan bidang usaha agar sistem bisa mencarikan koneksi yang lebih relevan.</p>
                 <div class="mt-4 flex flex-col gap-2">
@@ -119,8 +124,8 @@
         @else
             <div class="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
                 @foreach ($rekomendasi as $r)
-                    <div class="shrink-0 w-44 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-4 shadow-sm">
-                        <div class="w-12 h-12 rounded-full bg-teal-50 text-brand grid place-items-center font-bold mb-3">{{ strtoupper(substr($r->user->name, 0, 1)) }}</div>
+                    <div class="shrink-0 w-44 rounded-[28px] border border-white/70 bg-white/82 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_30px_rgba(2,6,23,0.30)]">
+                        <div class="mb-3 grid h-12 w-12 place-items-center rounded-full bg-teal-50 font-bold text-brand ring-1 ring-brand/10 dark:bg-teal-950/40">{{ strtoupper(substr($r->user->name, 0, 1)) }}</div>
                         <p class="font-semibold text-sm truncate">{{ $r->user->name }}</p>
                         <p class="text-xs text-slate-500 truncate mt-1">{{ $r->profesi ?: 'Alumni' }}</p>
                         <p class="text-[11px] text-slate-400 mt-1 line-clamp-2">{{ $r->bidang_usaha ?: 'Potensial untuk dijajaki sebagai koneksi profesional.' }}</p>
@@ -142,8 +147,8 @@
             <a href="{{ route('events.index') }}" class="text-xs text-brand font-semibold">Lihat semua</a>
         </div>
         @forelse ($eventTerdekat as $e)
-            <a href="{{ route('events.show', $e) }}" class="flex items-center gap-3 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-3.5 mb-2 shadow-sm">
-                <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand grid place-items-center shrink-0">
+            <a href="{{ route('events.show', $e) }}" class="mb-2 flex items-center gap-3 rounded-[28px] border border-white/70 bg-white/82 p-3.5 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_30px_rgba(2,6,23,0.30)]">
+                <div class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-teal-50 text-brand ring-1 ring-brand/10 dark:bg-teal-950/40">
                     <div class="text-center leading-none">
                         <p class="text-base font-extrabold">{{ $e->mulai_at->format('d') }}</p>
                         <p class="text-[9px] uppercase">{{ $e->mulai_at->format('M') }}</p>
@@ -156,7 +161,7 @@
                 </div>
             </a>
         @empty
-            <div class="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-6 text-center bg-white/70 dark:bg-slate-900/60">
+            <div class="rounded-[28px] border border-dashed border-slate-300 p-6 text-center bg-white/80 shadow-sm dark:border-slate-700 dark:bg-slate-900/60">
                 <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">Belum ada event terdekat</p>
                 <p class="mt-1 text-sm text-slate-500">Pantau agenda terbaru dan ikut serta saat program komunitas dibuka kembali.</p>
                 <a href="{{ route('events.index') }}" class="inline-flex items-center justify-center mt-4 rounded-2xl bg-brand px-4 py-2.5 text-sm font-semibold text-white">Lihat Semua Event</a>

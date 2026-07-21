@@ -13,28 +13,33 @@
     <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#0E7C86',dark:'#0F5E5A',accent:'#F5A623'}}}}}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>body{font-family:'Inter',system-ui,sans-serif}</style>
+    <style>
+        :root{--safe-bottom: env(safe-area-inset-bottom, 0px)}
+        body{font-family:'Inter',system-ui,sans-serif}
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 antialiased">
     <div class="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,_rgba(14,124,134,0.45),_transparent_55%)] pointer-events-none"></div>
-    <header class="relative max-w-lg mx-auto px-5 h-16 flex items-center justify-between">
+    <header class="sticky top-0 z-20 px-3 pt-3">
+        <div class="relative max-w-lg mx-auto flex h-16 items-center justify-between rounded-[28px] border border-white/10 bg-slate-950/70 px-4 shadow-[0_18px_55px_rgba(2,6,23,0.35)] backdrop-blur-2xl">
         <div class="flex items-center gap-3">
             <span class="w-12 h-12 rounded-full bg-white p-1.5 grid place-items-center shadow-[0_10px_30px_rgba(2,6,23,0.18)] ring-1 ring-brand/20">
                 <img src="/images/kkmb-logo-solid.png" alt="Logo KKMB" class="w-full h-full object-contain">
             </span>
             <span class="leading-tight">
                 <span class="block font-bold text-white">KKMB <span class="text-brand">Connect</span></span>
-                <span class="block text-[10px] uppercase tracking-[0.22em] text-slate-400">Koperasi Kesejahteraan Mahasiswa Bandung</span>
+                <span class="block text-[10px] uppercase tracking-[0.22em] text-slate-400">Premium Mobile Experience</span>
             </span>
         </div>
         <a href="{{ route('login') }}" class="text-sm font-semibold text-brand bg-white/8 border border-white/10 px-4 py-2 rounded-full backdrop-blur">Masuk</a>
+        </div>
     </header>
 
     <section class="relative max-w-lg mx-auto px-5 pt-8 pb-10">
-        <div class="rounded-[32px] border border-white/10 bg-white/6 backdrop-blur-xl overflow-hidden shadow-[0_30px_90px_rgba(15,94,90,0.28)]">
+        <div class="overflow-hidden rounded-[34px] border border-white/10 bg-white/6 shadow-[0_30px_90px_rgba(15,94,90,0.28)] backdrop-blur-xl">
             <div class="p-6 text-center">
                 <span class="inline-flex items-center gap-2 text-[11px] font-semibold text-brand bg-brand/10 border border-brand/20 px-3 py-1.5 rounded-full mb-4">
-                    Jaringan Alumni Premium
+                    Premium Alumni App
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                 </span>
                 <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white">
@@ -71,7 +76,7 @@
                         alt="Pratinjau premium KKMB Connect"
                         class="w-full h-56 object-cover rounded-2xl border border-white/10"
                     >
-                    <div class="grid grid-cols-2 gap-2 mt-3">
+                    <div class="mt-3 grid grid-cols-2 gap-2">
                         <div class="rounded-2xl bg-white/8 border border-white/10 px-3 py-3">
                             <p class="text-[11px] uppercase tracking-[0.24em] text-slate-400">Trust Layer</p>
                             <p class="mt-1 text-sm font-semibold text-white">Direktori alumni terverifikasi</p>
@@ -117,7 +122,7 @@
         @endforeach
     </section>
 
-    <section class="max-w-lg mx-auto px-5 pb-24">
+    <section class="max-w-lg mx-auto px-5 pb-28">
         <div class="rounded-[28px] border border-brand/20 bg-[linear-gradient(135deg,rgba(14,124,134,0.18),rgba(245,166,35,0.10))] p-5">
             <p class="text-[11px] uppercase tracking-[0.24em] text-brand">Suara Komunitas</p>
             <p class="mt-3 text-base leading-relaxed text-white">
@@ -133,8 +138,8 @@
         </div>
     </section>
 
-    <div class="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-slate-950/90 backdrop-blur">
-        <div class="max-w-lg mx-auto px-5 py-3 flex items-center gap-3">
+    <div class="fixed inset-x-0 bottom-0 z-30 px-3 pb-[calc(0.85rem+var(--safe-bottom))]">
+        <div class="max-w-lg mx-auto flex items-center gap-3 rounded-[28px] border border-white/10 bg-slate-950/88 px-5 py-3 shadow-[0_18px_55px_rgba(2,6,23,0.42)] backdrop-blur-2xl">
             <div class="min-w-0">
                 <p class="text-xs font-semibold text-white truncate">Gabung ke jaringan alumni yang lebih premium</p>
                 <p class="text-[11px] text-slate-400 truncate">Direktori, kartu anggota, event, dan peluang bisnis dalam satu aplikasi</p>

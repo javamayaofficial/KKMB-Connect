@@ -1,9 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Pembayaran')
 @section('content')
-    <h1 class="text-xl font-bold mb-4">Pembayaran Manual</h1>
+    <section class="mb-5 rounded-[30px] border border-brand/10 bg-[linear-gradient(145deg,rgba(14,124,134,1),rgba(15,94,90,0.94),rgba(2,6,23,0.96))] p-5 text-white shadow-[0_18px_55px_rgba(15,94,90,0.18)]">
+        <p class="text-xs uppercase tracking-[0.22em] text-white/60">Payment Desk</p>
+        <h1 class="mt-2 text-2xl font-bold tracking-tight">Pembayaran Manual</h1>
+        <p class="mt-2 text-sm leading-relaxed text-white/75">Selesaikan tagihan dan unggah bukti transfer dengan alur yang lebih rapi dari perangkat mobile.</p>
+    </section>
 
-    <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-5 mb-4">
+    <div class="mb-4 rounded-[30px] border border-white/70 bg-white/85 p-5 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_32px_rgba(2,6,23,0.32)]">
         <p class="text-xs text-slate-500">Total yang harus dibayar</p>
         <p class="text-2xl font-extrabold text-brand">Rp{{ number_format($payment->jumlah, 0, ',', '.') }}</p>
         <span class="inline-block mt-1 text-[11px] font-bold px-2 py-0.5 rounded-full
@@ -12,7 +16,7 @@
         </span>
     </div>
 
-    <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-5 mb-4">
+    <div class="mb-4 rounded-[30px] border border-white/70 bg-white/85 p-5 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_32px_rgba(2,6,23,0.32)]">
         <p class="font-semibold text-sm mb-2">Transfer ke:</p>
         <div class="text-sm space-y-1">
             <p><span class="text-slate-400">Bank</span> · <span class="font-semibold">{{ $bank['bank'] }}</span></p>
@@ -26,7 +30,7 @@
     </div>
 
     @if ($payment->status !== 'verified')
-        <form method="POST" action="{{ route('subscription.proof', $payment) }}" enctype="multipart/form-data" class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-5 space-y-3">
+        <form method="POST" action="{{ route('subscription.proof', $payment) }}" enctype="multipart/form-data" class="space-y-3 rounded-[30px] border border-white/70 bg-white/85 p-5 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/88 dark:shadow-[0_12px_32px_rgba(2,6,23,0.32)]">
             @csrf
             <p class="font-semibold text-sm">Upload Bukti Transfer</p>
             <input type="file" name="bukti" accept="image/*,application/pdf" required
